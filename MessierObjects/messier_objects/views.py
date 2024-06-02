@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,10 +9,12 @@ def types_of_objects(request, types_slug): # обьекты по их катег
 def discovery_date(request, discovery_date_convert): # год открытия объекта(потом добавлю вместе с датой открытия)
     return HttpResponse(f"<h1>Год открытия</h1><p>{discovery_date_convert}")
 def each_object(request, object_name): # каждый обьект из каталога по отдельности
+    print(request.GET)
     if int(object_name[1:]) > 110 or int(object_name[1:]) <= 0:
-        return HttpResponse(f'404 Страница не найдена')
+        raise Http404()
     return HttpResponse(f"<h1>Объект</h1><p> {object_name}")
-
+def page_not_found(request, exception):
+    return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
 

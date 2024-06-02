@@ -23,3 +23,4 @@ urlpatterns = [
     path('date/<date_convert:discovery_date_convert>/', views.discovery_date),
     path('object_name/<M_number:object_name>/', views.each_object),
     ]
+#http://127.0.0.1:8000/object_name/M42/?name=Andromeda&type=galaxy get - запрос

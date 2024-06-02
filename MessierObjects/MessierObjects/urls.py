@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from messier_objects.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('messier_objects.urls'))
 ]
+#handler400
+#handler403
+handler404 = page_not_found # имя функции представления которая будет срабатывать когда будет сгенерирована ошибка 404
+#handler500
